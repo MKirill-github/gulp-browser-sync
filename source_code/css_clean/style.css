@@ -1,0 +1,11 @@
+header{
+border-block-color: red;
+};
+
+body{
+  color: red
+};
+
+b{
+  background-repeat: inherit
+}
