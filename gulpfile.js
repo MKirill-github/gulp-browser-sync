@@ -42,15 +42,22 @@ function css(done) {
 function f_bs(done) {
   bs.init({
     server: {
-      baseDir: './'
+      baseDir: './',
+      index: 'index_copy.html'
     }
   });
-  gulp.watch('./source_code/css_clean/**/*.css', css)
+  // gulp.watch('./source_code/css_clean/**/*.css', css)
+  gulp.watch('./source_code/css_clean/**/*.css').on('change', () => {
+    let reload = bs.reload;
+    console.log('OK_css');
+    reload()
+
+  })
   gulp.watch('./*.html').on('change', bs.reload)
+  console.log('OK')
   done()
   //https://www.youtube.com/watch?v=QgMQeLymAdU
 }
-
 
 gulp.task('default', css_sass);
 gulp.task(css);
